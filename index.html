@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dean Schiltz — Full Stack Web Software Developer</title>
+    <meta
+      name="description"
+      content="Dean Schiltz, Full Stack Web Software Developer at General Motors in Austin, Texas."
+    />
+    <link rel="canonical" href="https://dev-portfolio.pages.dev/" />
+    <meta name="author" content="Dean Schiltz" />
+    <meta name="theme-color" content="#0b0d10" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Dean Schiltz — Full Stack Web Software Developer"
+    />
+    <meta
+      property="og:description"
+      content="Full Stack Web Software Developer at General Motors in Austin, Texas."
+    />
+    <meta property="og:url" content="https://dev-portfolio.pages.dev/" />
+    <meta
+      property="og:image"
+      content="https://dev-portfolio.pages.dev/og-image.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Dean Schiltz — Full Stack Web Software Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Full Stack Web Software Developer at General Motors in Austin, Texas."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dev-portfolio.pages.dev/og-image.jpg"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dean Schiltz",
+        "jobTitle": "Full Stack Web Software Developer",
+        "url": "https://dev-portfolio.pages.dev/",
+        "email": "mailto:deandschiltz@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Austin",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://github.com/deanschiltz",
+          "https://www.linkedin.com/in/dean-schiltz"
+        ]
+      }
+    </script>
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)',
+          ).matches
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : prefersDark
+                ? 'dark'
+                : 'light'
+          if (theme === 'dark') document.documentElement.classList.add('dark')
+          document.documentElement.style.colorScheme = theme
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

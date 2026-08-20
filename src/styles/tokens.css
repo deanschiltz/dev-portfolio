@@ -1,0 +1,27 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #14171c;
+  --muted: #5b6470;
+  --accent: #0f766e;
+  --accent-strong: #0b5f59;
+  --on-accent: #ffffff;
+  --border: #d8dee6;
+  --ring: #0f766e;
+  --nav: rgb(244 245 247 / 0.86);
+  --shadow: rgb(15 23 42 / 0.08);
+}
+
+.dark {
+  --bg: #0b0d10;
+  --surface: #14181e;
+  --text: #eef1f4;
+  --muted: #9aa3ad;
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --on-accent: #0b0d10;
+  --border: #2a313a;
+  --ring: #2dd4bf;
+  --nav: rgb(11 13 16 / 0.82);
+  --shadow: rgb(0 0 0 / 0.35);
+}
