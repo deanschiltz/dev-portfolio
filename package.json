@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Personal developer portfolio for Dean Schiltz",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=22"
   },

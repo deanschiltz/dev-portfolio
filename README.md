@@ -127,4 +127,6 @@ If the site is served from `https://USERNAME.github.io/dev-portfolio/` (a projec
 
 ## License
 
-Source code is MIT (see `LICENSE`). Resume, photographs, and written bio remain yours; do not treat those as MIT-licensed content unless you say so.
+Copyright © 2026 Dean Schiltz. All rights reserved.
+
+No part of this repository may be copied, modified, or distributed without prior written permission.
