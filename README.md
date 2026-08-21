@@ -2,7 +2,7 @@
 
 Personal, single-page developer portfolio. Recruiters get a fast scan of who I am, what I build, and how to reach me. The site is a static React app with no backend.
 
-**Live site:** https://deanschiltz.github.io/dev-portfolio/ (after the first GitHub Pages deploy)
+**Live site:** https://deanschiltz.com
 
 ## Tech stack
 
@@ -30,13 +30,13 @@ src/
   assets/images  Headshot and optional project screenshots
   hooks/         Theme and reduced-motion helpers
   styles/        Color tokens
-public/          Resume PDF, OG image, robots.txt, sitemap.xml
+public/          Resume PDF, OG image, robots.txt, sitemap.xml, CNAME
 ```
 
 - Add a project: append an object in `src/data/projects.ts`.
 - Replace the headshot: drop a **transparent PNG** at `src/assets/images/headshot.png`, update the import in `src/data/profile.ts`, and set `headshotAlt`.
 - Replace the resume: put the PDF at `public/resume.pdf`.
-- Change the public URL: update `siteUrl` in `src/data/profile.ts`, then the same value in `index.html`, `public/robots.txt`, and `public/sitemap.xml`. If you move to a custom domain at the site root, also set Vite `base` to `'/'` in `vite.config.ts`.
+- Change the public URL: update `siteUrl` in `src/data/profile.ts`, then the same value in `index.html`, `public/robots.txt`, `public/sitemap.xml`, and `public/CNAME`.
 
 ## Prerequisites
 
@@ -60,12 +60,10 @@ npm run build
 npm run preview
 ```
 
-`npm run preview` serves the production build with the GitHub Pages base path (`/dev-portfolio/`). Open the URL Vite prints (it includes that path).
-
 Optional visual check before launch (Chrome required):
 
 ```bash
-npx lighthouse http://localhost:4173/dev-portfolio/ --only-categories=performance,accessibility,seo --view
+npx lighthouse http://localhost:4173 --only-categories=performance,accessibility,seo --view
 ```
 
 ## Deployment path
@@ -79,7 +77,7 @@ GitHub Actions: typecheck, lint, test, build
         ↓
 GitHub Pages deploy from dist/
         ↓
-Live site: https://deanschiltz.github.io/dev-portfolio/
+Live site: https://deanschiltz.com
 ```
 
 ### Enable GitHub Pages (one-time)
@@ -89,16 +87,31 @@ Live site: https://deanschiltz.github.io/dev-portfolio/
 3. Under **Build and deployment → Source**, choose **GitHub Actions**
 4. Push to `main` (or re-run the **Deploy GitHub Pages** workflow under the **Actions** tab)
 
-After the workflow finishes, the site is live at:
-
-**https://deanschiltz.github.io/dev-portfolio/**
-
 CI workflow: `.github/workflows/ci.yml`  
 Deploy workflow: `.github/workflows/deploy-pages.yml`
 
-### Custom domain (optional, later)
+### Custom domain: deanschiltz.com
 
-In **Settings → Pages → Custom domain**, enter your domain and follow GitHub’s DNS instructions. When the site is served from the domain root (no `/dev-portfolio/` path), set `base: '/'` in `vite.config.ts` and update `siteUrl` plus the SEO URLs listed above.
+1. At your DNS provider, add these records for the **apex** domain:
+
+| Type | Name | Value |
+| ---- | ---- | ----- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+
+2. Optional but recommended — redirect `www` to the apex:
+
+| Type | Name | Value |
+| ---- | ---- | ----- |
+| CNAME | `www` | `deanschiltz.github.io` |
+
+3. In GitHub: **Settings → Pages → Custom domain** → enter `deanschiltz.com` → Save.
+4. Wait for DNS check to pass, then enable **Enforce HTTPS**.
+5. Push the repo changes that set Vite `base` to `/` and update site URLs (already in this project via `public/CNAME`).
+
+DNS can take a few minutes to a few hours to propagate.
 
 ## License
 

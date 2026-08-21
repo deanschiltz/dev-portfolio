@@ -1,7 +1,7 @@
 import headshot from '../assets/images/headshot.png'
 import type { Profile } from '../types/portfolio'
 
-const siteUrl = 'https://deanschiltz.github.io/dev-portfolio'
+const siteUrl = 'https://deanschiltz.com'
 
 export const profile: Profile = {
   name: 'Dean Schiltz',
@@ -20,13 +20,13 @@ export const profile: Profile = {
   email: 'deandschiltz@gmail.com',
   siteUrl,
   sourceRepoUrl: 'https://github.com/deanschiltz/dev-portfolio',
-  // Respect Vite `base` so the resume works under /dev-portfolio/ on GitHub Pages.
+  // Respect Vite `base` so the resume path stays correct in local + production.
   resumePath: `${import.meta.env.BASE_URL}resume.pdf`,
   headshot,
   headshotAlt: 'Portrait of Dean Schiltz in a navy suit',
 }
 
 /**
- * Keep `siteUrl` aligned with the live GitHub Pages URL so canonical,
+ * Keep `siteUrl` aligned with the live custom domain so canonical,
  * Open Graph, sitemap, and robots.txt stay consistent.
  */

@@ -4,9 +4,8 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  // Project site: https://deanschiltz.github.io/dev-portfolio/
-  // Change to '/' if you later use a custom domain at the site root.
-  base: '/dev-portfolio/',
+  // Custom domain (deanschiltz.com) is served from the site root.
+  base: '/',
   plugins: [react(), tailwindcss()],
   test: {
     environment: 'jsdom',

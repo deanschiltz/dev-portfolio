@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deanschiltz.github.io/dev-portfolio/sitemap.xml
+Sitemap: https://deanschiltz.com/sitemap.xml
