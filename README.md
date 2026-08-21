@@ -35,7 +35,7 @@ public/          Resume PDF, OG image, robots.txt, sitemap.xml, CNAME
 
 - Add a project: append an object in `src/data/projects.ts`.
 - Replace the headshot: drop a **transparent PNG** at `src/assets/images/headshot.png`, update the import in `src/data/profile.ts`, and set `headshotAlt`.
-- Replace the resume: put the PDF at `public/resume.pdf`.
+- Replace the resume PDF (kept offline for you): put it at `public/resume.pdf`. Site buttons use “Ask for Resume” and open a mailto draft instead of linking the file.
 - Change the public URL: update `siteUrl` in `src/data/profile.ts`, then the same value in `index.html`, `public/robots.txt`, `public/sitemap.xml`, and `public/CNAME`.
 
 ## Prerequisites

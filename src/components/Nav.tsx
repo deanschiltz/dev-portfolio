@@ -160,13 +160,8 @@ export function Nav() {
               {item.label}
             </a>
           ))}
-          <Button
-            href={profile.resumePath}
-            variant="secondary"
-            className="ml-2"
-            newTab
-          >
-            Resume
+          <Button href={profile.resumePath} variant="secondary" className="ml-2">
+            Ask for Resume
           </Button>
           <ThemeToggle />
         </nav>
@@ -242,10 +237,9 @@ export function Nav() {
                 href={profile.resumePath}
                 variant="secondary"
                 className="mt-2"
-                newTab
                 onClick={closeMenu}
               >
-                Resume
+                Ask for Resume
               </Button>
             </nav>
           </m.div>

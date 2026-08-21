@@ -2,6 +2,9 @@ import headshot from '../assets/images/headshot.png'
 import type { Profile } from '../types/portfolio'
 
 const siteUrl = 'https://deanschiltz.com'
+const email = 'deandschiltz@gmail.com'
+
+const resumeAskMailto = `mailto:${email}?subject=${encodeURIComponent('Resume request')}&body=${encodeURIComponent("Hello Dean Schiltz,\n\nI would like a copy of your resume.\n\nThank you.")}`
 
 export const profile: Profile = {
   name: 'Dean Schiltz',
@@ -17,11 +20,11 @@ export const profile: Profile = {
     'Currently, I am a Full Stack Software Developer at General Motors, where I enhance full-stack web applications for the Centralized Asset Lifecycle Management System (CALMS) using C#, ASP.NET Core, SQL Server, jQuery, HTML, CSS, and Telerik Kendo UI. I also co-lead working sessions with business stakeholders to gather requirements, prioritize application enhancements, and ensure solutions align with business objectives.',
   ],
   location: 'Austin, Texas',
-  email: 'deandschiltz@gmail.com',
+  email,
   siteUrl,
   sourceRepoUrl: 'https://github.com/deanschiltz/dev-portfolio',
-  // Respect Vite `base` so the resume path stays correct in local + production.
-  resumePath: `${import.meta.env.BASE_URL}resume.pdf`,
+  // PDF stays in public/resume.pdf for your use; site CTAs open a mailto request.
+  resumePath: resumeAskMailto,
   headshot,
   headshotAlt: 'Portrait of Dean Schiltz in a navy suit',
 }

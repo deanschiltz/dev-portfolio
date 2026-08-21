@@ -95,8 +95,8 @@ export function Hero() {
             }}
           >
             <Button href="#contact">Contact Me</Button>
-            <Button href={profile.resumePath} variant="secondary" newTab>
-              Download Resume
+            <Button href={profile.resumePath} variant="secondary">
+              Ask for Resume
             </Button>
             <Button href="#experience" variant="ghost">
               View Experience
