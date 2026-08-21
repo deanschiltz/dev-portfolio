@@ -1,0 +1,2 @@
+# Tell GitHub Pages not to process the site with Jekyll.
+# Vite builds can include paths Jekyll would otherwise ignore.

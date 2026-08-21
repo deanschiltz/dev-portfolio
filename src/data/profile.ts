@@ -1,6 +1,8 @@
 import headshot from '../assets/images/headshot.png'
 import type { Profile } from '../types/portfolio'
 
+const siteUrl = 'https://deanschiltz.github.io/dev-portfolio'
+
 export const profile: Profile = {
   name: 'Dean Schiltz',
   shortName: 'Dean',
@@ -16,14 +18,15 @@ export const profile: Profile = {
   ],
   location: 'Austin, Texas',
   email: 'deandschiltz@gmail.com',
-  siteUrl: 'https://dev-portfolio.pages.dev',
+  siteUrl,
   sourceRepoUrl: 'https://github.com/deanschiltz/dev-portfolio',
-  resumePath: '/resume.pdf',
+  // Respect Vite `base` so the resume works under /dev-portfolio/ on GitHub Pages.
+  resumePath: `${import.meta.env.BASE_URL}resume.pdf`,
   headshot,
   headshotAlt: 'Portrait of Dean Schiltz in a navy suit',
 }
 
 /**
- * Update `siteUrl` after the first Cloudflare Pages deploy so canonical,
- * Open Graph, sitemap, and robots.txt stay aligned.
+ * Keep `siteUrl` aligned with the live GitHub Pages URL so canonical,
+ * Open Graph, sitemap, and robots.txt stay consistent.
  */
