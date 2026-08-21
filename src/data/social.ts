@@ -15,6 +15,6 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'email',
     label: 'Email',
-    href: `mailto:${profile.email}`,
+    href: profile.contactPath,
   },
 ]

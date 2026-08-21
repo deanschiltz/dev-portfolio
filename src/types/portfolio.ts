@@ -12,6 +12,7 @@ export interface Profile {
   email: string
   siteUrl: string
   sourceRepoUrl: string
+  contactPath: string
   resumePath: string
   headshot: string
   headshotAlt: string

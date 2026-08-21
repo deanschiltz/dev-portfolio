@@ -15,6 +15,9 @@ dist-ssr
 lighthouse-report.json
 lighthouse-report.html
 
+# Never deploy resume (mailto-only)
+public/resume.pdf
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

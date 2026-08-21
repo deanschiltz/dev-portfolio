@@ -94,7 +94,7 @@ export function Hero() {
               delay: prefersReducedMotion ? 0 : 0.15,
             }}
           >
-            <Button href="#contact">Contact Me</Button>
+            <Button href={profile.contactPath}>Contact Me</Button>
             <Button href={profile.resumePath} variant="secondary">
               Ask for Resume
             </Button>

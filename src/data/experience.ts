@@ -5,7 +5,7 @@ export const experience: Experience[] = [
     id: 'gm-fullstack',
     company: 'General Motors',
     position: 'Full Stack Web Software Developer',
-    location: 'Austin, Texas',
+    location: 'Texas',
     start: 'Sep 2021',
     end: 'Present',
     description: [
@@ -16,7 +16,7 @@ export const experience: Experience[] = [
     id: 'gm-sdet',
     company: 'General Motors',
     position: 'Software Developer Engineer - QA',
-    location: 'Austin, Texas',
+    location: 'Texas',
     start: 'Jun 2019',
     end: 'Sep 2021',
     description: [

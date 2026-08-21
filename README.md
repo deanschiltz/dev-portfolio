@@ -30,12 +30,12 @@ src/
   assets/images  Headshot and optional project screenshots
   hooks/         Theme and reduced-motion helpers
   styles/        Color tokens
-public/          Resume PDF, OG image, robots.txt, sitemap.xml, CNAME
+public/          OG image, robots.txt, sitemap.xml, CNAME
 ```
 
 - Add a project: append an object in `src/data/projects.ts`.
 - Replace the headshot: drop a **transparent PNG** at `src/assets/images/headshot.png`, update the import in `src/data/profile.ts`, and set `headshotAlt`.
-- Replace the resume PDF (kept offline for you): put it at `public/resume.pdf`. Site buttons use “Ask for Resume” and open a mailto draft instead of linking the file.
+- Resume is request-only via mailto (“Ask for Resume”); do **not** put a PDF in `public/` (it would be publicly downloadable).
 - Change the public URL: update `siteUrl` in `src/data/profile.ts`, then the same value in `index.html`, `public/robots.txt`, `public/sitemap.xml`, and `public/CNAME`.
 
 ## Prerequisites

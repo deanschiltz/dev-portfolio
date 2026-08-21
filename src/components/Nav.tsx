@@ -8,13 +8,17 @@ import { ThemeToggle } from './ThemeToggle'
 import { cn } from '../utils/cn'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 
+const menuTransition = {
+  duration: 0.28,
+  ease: [0.22, 1, 0.36, 1] as const,
+}
+
 export function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const menuId = useId()
   const headerRef = useRef<HTMLElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
-  const [instantMenuClose, setInstantMenuClose] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
   const closeMenu = useCallback(() => {
@@ -28,7 +32,7 @@ export function Nav() {
   }, [])
 
   const scrollToSection = useCallback(
-    (href: string, offset = getNavOffset()) => {
+    (href: string) => {
       const targetId = href.startsWith('#') ? href.slice(1) : href
       const target = document.getElementById(targetId)
       if (!target) {
@@ -36,7 +40,7 @@ export function Nav() {
       }
 
       const top =
-        target.getBoundingClientRect().top + window.scrollY - offset
+        target.getBoundingClientRect().top + window.scrollY - getNavOffset()
 
       window.scrollTo({
         top,
@@ -49,25 +53,12 @@ export function Nav() {
 
   const navigateToSection = useCallback(
     (href: string) => {
-      // Capture full header height while the menu is still open. After the menu
-      // closes, the page shifts up by that extra height — using it here keeps
-      // the section aligned under the sticky bar without waiting for the animation.
-      const offset =
-        open && headerRef.current
-          ? headerRef.current.offsetHeight
-          : getNavOffset()
-
-      setInstantMenuClose(open)
       closeMenu()
       menuButtonRef.current?.focus()
-      window.requestAnimationFrame(() => scrollToSection(href, offset))
+      window.requestAnimationFrame(() => scrollToSection(href))
     },
-    [closeMenu, getNavOffset, open, scrollToSection],
+    [closeMenu, scrollToSection],
   )
-
-  const onMenuExitComplete = useCallback(() => {
-    setInstantMenuClose(false)
-  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -125,6 +116,8 @@ export function Nav() {
     }
   }, [open, closeMenu])
 
+  const motionOff = prefersReducedMotion
+
   return (
     <header
       ref={headerRef}
@@ -135,7 +128,7 @@ export function Nav() {
     >
       <Container
         data-nav-bar
-        className="flex h-16 items-center justify-between gap-4"
+        className="relative z-20 flex h-16 items-center justify-between gap-4"
       >
         <a
           href="#top"
@@ -202,47 +195,58 @@ export function Nav() {
         </div>
       </Container>
 
-      <AnimatePresence onExitComplete={onMenuExitComplete}>
+      <AnimatePresence>
         {open ? (
-          <m.div
-            id={menuId}
-            className="border-line bg-canvas relative z-10 border-t md:hidden"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={
-              prefersReducedMotion || instantMenuClose
-                ? { opacity: 0 }
-                : { opacity: 0, y: -8 }
-            }
-            transition={{
-              duration:
-                prefersReducedMotion || instantMenuClose ? 0 : 0.2,
-            }}
-          >
-            <nav aria-label="Mobile" className="flex flex-col px-5 py-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  className="text-ink min-h-11 py-3 text-base"
-                  onClick={(event) => {
-                    event.preventDefault()
-                    navigateToSection(item.href)
-                  }}
+          <>
+            <m.button
+              type="button"
+              aria-label="Close menu"
+              className="fixed inset-0 z-10 bg-black/25 md:hidden"
+              initial={motionOff ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={motionOff ? { duration: 0 } : menuTransition}
+              onClick={closeMenu}
+            />
+            <m.div
+              id={menuId}
+              className="border-line bg-canvas absolute inset-x-0 top-full z-10 origin-top border-b shadow-[0_12px_32px_rgba(0,0,0,0.12)] md:hidden"
+              initial={
+                motionOff ? false : { opacity: 0, y: -12, scaleY: 0.96 }
+              }
+              animate={{ opacity: 1, y: 0, scaleY: 1 }}
+              exit={
+                motionOff
+                  ? { opacity: 0 }
+                  : { opacity: 0, y: -12, scaleY: 0.96 }
+              }
+              transition={motionOff ? { duration: 0 } : menuTransition}
+            >
+              <nav aria-label="Mobile" className="flex flex-col px-5 py-4">
+                {navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className="text-ink min-h-11 py-3 text-base"
+                    onClick={(event) => {
+                      event.preventDefault()
+                      navigateToSection(item.href)
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <Button
+                  href={profile.resumePath}
+                  variant="secondary"
+                  className="mt-2"
+                  onClick={closeMenu}
                 >
-                  {item.label}
-                </a>
-              ))}
-              <Button
-                href={profile.resumePath}
-                variant="secondary"
-                className="mt-2"
-                onClick={closeMenu}
-              >
-                Ask for Resume
-              </Button>
-            </nav>
-          </m.div>
+                  Ask for Resume
+                </Button>
+              </nav>
+            </m.div>
+          </>
         ) : null}
       </AnimatePresence>
     </header>
