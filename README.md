@@ -30,14 +30,14 @@ src/
   assets/images  Headshot and optional project screenshots
   hooks/         Theme and reduced-motion helpers
   styles/        Color tokens
-public/          OG image, robots.txt, sitemap.xml, CNAME
+public/          OG image, robots.txt, CNAME
 ```
 
 - Add a project: append an object in `src/data/projects.ts`.
 - Replace the headshot: drop a **transparent PNG** at `src/assets/images/headshot.png`, update the import in `src/data/profile.ts`, and set `headshotAlt`.
 - Resume is request-only via mailto (“Ask for Resume”); do **not** put a PDF in `public/` (it would be publicly downloadable).
-- Change the public URL: update `siteUrl` in `src/data/profile.ts`, then the same value in `index.html`, `public/robots.txt`, `public/sitemap.xml`, and `public/CNAME`.
-
+- Change the public URL: update `siteUrl` in `src/data/profile.ts`, then the same value in `index.html`, `public/robots.txt`, and `public/CNAME`.
+- The site is set to `noindex` (meta robots + `Disallow: /` in `robots.txt`) so it should not appear in Google search.
 ## Prerequisites
 
 - Node.js 22+ (see `.nvmrc`)

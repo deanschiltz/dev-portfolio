@@ -34,5 +34,5 @@ export const profile: Profile = {
 
 /**
  * Keep `siteUrl` aligned with the live custom domain so canonical,
- * Open Graph, sitemap, and robots.txt stay consistent.
+ * Open Graph, and robots.txt stay consistent.
  */
