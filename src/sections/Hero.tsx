@@ -20,8 +20,8 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_srgb,var(--accent)_12%,transparent),transparent_55%)]"
       />
 
-      <Container className="relative grid items-end gap-10 py-14 sm:py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:gap-8 lg:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(22rem,0.9fr)] xl:gap-12">
-        <div className="order-2 pb-2 lg:order-1 lg:pb-10">
+      <Container className="relative grid items-end gap-8 py-14 sm:gap-10 sm:py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:gap-x-8 lg:gap-y-0 lg:py-20 xl:grid-cols-[minmax(0,1.1fr)_minmax(22rem,0.9fr)] xl:gap-x-12">
+        <div className="order-1 lg:col-start-1 lg:row-start-1 lg:self-end">
           <m.p
             className="text-muted text-sm font-medium sm:text-base"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
@@ -58,9 +58,35 @@ export function Hero() {
           >
             {profile.focus} · {profile.summary}
           </m.p>
+        </div>
 
+        <m.div
+          className="relative order-2 mx-auto w-full max-w-md lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none lg:justify-self-end lg:self-end"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: prefersReducedMotion ? 0 : 0.08 }}
+        >
+          <div className="relative isolate mx-auto aspect-[4/5] w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-none">
+            <div
+              aria-hidden="true"
+              className="bg-accent absolute right-[14%] bottom-[8%] left-[22%] z-0 h-[52%] skew-x-[-10deg] rounded-sm"
+            />
+
+            <img
+              src={profile.headshot}
+              alt={profile.headshotAlt}
+              width={533}
+              height={999}
+              fetchPriority="high"
+              decoding="async"
+              className="relative z-10 mx-auto h-full w-auto max-w-[90%] object-contain object-bottom drop-shadow-[0_18px_36px_rgba(0,0,0,0.2)]"
+            />
+          </div>
+        </m.div>
+
+        <div className="order-3 pb-2 lg:col-start-1 lg:row-start-2 lg:self-start lg:pb-10">
           <m.div
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center lg:mt-8"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -95,30 +121,6 @@ export function Hero() {
             ))}
           </m.div>
         </div>
-
-        <m.div
-          className="relative order-1 mx-auto w-full max-w-md lg:order-2 lg:mx-0 lg:max-w-none lg:justify-self-end"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: prefersReducedMotion ? 0 : 0.08 }}
-        >
-          <div className="relative isolate mx-auto aspect-[4/5] w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-none">
-            <div
-              aria-hidden="true"
-              className="bg-accent absolute right-[14%] bottom-[8%] left-[22%] z-0 h-[52%] skew-x-[-10deg] rounded-sm"
-            />
-
-            <img
-              src={profile.headshot}
-              alt={profile.headshotAlt}
-              width={533}
-              height={999}
-              fetchPriority="high"
-              decoding="async"
-              className="relative z-10 mx-auto h-full w-auto max-w-[90%] object-contain object-bottom drop-shadow-[0_18px_36px_rgba(0,0,0,0.2)]"
-            />
-          </div>
-        </m.div>
       </Container>
     </section>
   )

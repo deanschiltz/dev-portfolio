@@ -14,14 +14,6 @@ export function Footer() {
           {socialLinks.map((link) => (
             <IconLink key={link.id} link={link} />
           ))}
-          <a
-            href={profile.sourceRepoUrl}
-            className="text-muted hover:text-accent ml-2 text-sm underline-offset-4 transition-colors hover:underline"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Source
-          </a>
         </div>
       </Container>
     </footer>

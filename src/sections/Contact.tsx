@@ -2,6 +2,7 @@ import { profile } from '../data/profile'
 import { socialLinks } from '../data/social'
 import { Button } from '../components/Button'
 import { Container } from '../components/Container'
+import { IconLink } from '../components/IconLink'
 import { InView } from '../components/InView'
 import { SectionHeading } from '../components/SectionHeading'
 
@@ -24,19 +25,21 @@ export function Contact() {
             title="Let’s talk"
             description="The fastest path is email. LinkedIn and GitHub are linked below if you prefer those."
           />
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             {emailLink ? (
               <Button href={emailLink.href}>Email {profile.shortName}</Button>
             ) : null}
             {linkedIn ? (
-              <Button href={linkedIn.href} variant="secondary">
-                LinkedIn
-              </Button>
+              <IconLink
+                link={linkedIn}
+                className="border-line bg-surface hover:border-accent rounded-full border"
+              />
             ) : null}
             {github ? (
-              <Button href={github.href} variant="secondary">
-                GitHub
-              </Button>
+              <IconLink
+                link={github}
+                className="border-line bg-surface hover:border-accent rounded-full border"
+              />
             ) : null}
           </div>
         </InView>
