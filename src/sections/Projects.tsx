@@ -1,3 +1,7 @@
+/**
+ * Projects section is currently hidden from the site.
+ * To restore: uncomment Projects in `src/app/App.tsx` and the nav item in `src/data/nav.ts`.
+ */
 import { useState } from 'react'
 import { projects } from '../data/projects'
 import { Container } from '../components/Container'

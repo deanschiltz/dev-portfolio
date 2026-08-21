@@ -8,7 +8,7 @@ import { Contact } from '../sections/Contact'
 import { Education } from '../sections/Education'
 import { Experience } from '../sections/Experience'
 import { Hero } from '../sections/Hero'
-import { Projects } from '../sections/Projects'
+// import { Projects } from '../sections/Projects' // keep: restore by uncommenting here and below
 import { Skills } from '../sections/Skills'
 
 export function App() {
@@ -23,7 +23,7 @@ export function App() {
             <About />
             <Experience />
             <Skills />
-            <Projects />
+            {/* <Projects /> */}
             <Education />
             <Contact />
           </main>

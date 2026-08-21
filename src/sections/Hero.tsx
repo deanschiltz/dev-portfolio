@@ -72,8 +72,8 @@ export function Hero() {
             <Button href={profile.resumePath} variant="secondary" newTab>
               Download Resume
             </Button>
-            <Button href="#projects" variant="ghost">
-              View Projects
+            <Button href="#experience" variant="ghost">
+              View Experience
             </Button>
           </m.div>
 
